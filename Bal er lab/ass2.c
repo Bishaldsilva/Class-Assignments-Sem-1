@@ -13,7 +13,7 @@ struct node *create(int size){
     printf("Enter the values..\n");
     for(i=0;i<size;i++){
         scanf("%d",&n);
-        struct node *newnode = (struct node *)malloc(sizeof(struct node *));
+        struct node *newnode = (struct node *)malloc(sizeof(struct node));
         newnode->data = n;
         if(head == NULL){
             head = newnode;
