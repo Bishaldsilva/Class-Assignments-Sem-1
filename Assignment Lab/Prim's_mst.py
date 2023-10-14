@@ -54,13 +54,13 @@ key = [INT_MAX] * no_of_nodes
 mst = [False] * no_of_nodes
 parent = [-1] * no_of_nodes
 
-count = 0
-for i in range(no_of_nodes):
-    for j in range(no_of_nodes):
-        if graph[i][j] == 0:
-            if i!=j:
-                print(i,j)
-            count +=1
+# count = 0
+# for i in range(no_of_nodes):
+#     for j in range(no_of_nodes):
+#         if graph[i][j] == 0:
+#             if i!=j:
+#                 print(i,j)
+#             count +=1
 
 print(solve_mst())
 # print(parent)
