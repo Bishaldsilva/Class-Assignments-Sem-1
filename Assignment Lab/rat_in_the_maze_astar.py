@@ -20,8 +20,6 @@ class Node:
         self.previous = None
         self.neighbors = []
         self.wall = False
-        if random.random() < 0.3:
-            self.wall = True
 
     def get_h(self,end):
         xd = end.row - self.row
@@ -29,6 +27,10 @@ class Node:
         # d = (xd +yd) +(math.sqrt(2) -2)*min(xd,yd )
         d = math.sqrt(xd**2 + yd**2)
         self.h = d
+
+    def is_wall(self):
+        if random.random() < 0.3 and [self.row,self.col] not in random_path:
+            self.wall = True
 
     def get_neighbors(self,graph):
         row = self.row
@@ -46,14 +48,14 @@ class Node:
         if col < cols - 1:
             self.neighbors.append(graph[row][col + 1])
 
-        if row > 0 and col > 0:
-            self.neighbors.append(graph[row-1][col-1])
-        if row < rows - 1 and col > 0:
-            self.neighbors.append(graph[row+1][col-1])
-        if row > 0 and col < cols -1:
-            self.neighbors.append(graph[row-1][col+1])
-        if row < rows - 1 and col < cols - 1:
-            self.neighbors.append(graph[row+1][col+ 1])
+        # if row > 0 and col > 0:
+        #     self.neighbors.append(graph[row-1][col-1])
+        # if row < rows - 1 and col > 0:
+        #     self.neighbors.append(graph[row+1][col-1])
+        # if row > 0 and col < cols -1:
+        #     self.neighbors.append(graph[row-1][col+1])
+        # if row < rows - 1 and col < cols - 1:
+        #     self.neighbors.append(graph[row+1][col+ 1])
 
 def get_path(current):
     path = [current]
@@ -90,10 +92,33 @@ def draw_maze():
                 # pygame.draw.rect(screen,(0,0,0),(j * size,i * size,size,size))
                 pygame.draw.circle(screen,(0,0,0),graph[i][j].center,4)
 
+def get_random_path():
+    global random_path
+    random_path = [[0,0]]
+    current_node = random_path[0]
+
+    while current_node != [cols - 1,rows - 1]:
+        if current_node[1] != cols - 1 and current_node[0] != rows - 1:
+            val = random.choice([0] * 50 + [1] * 75)
+            if val:
+                random_path.append([current_node[0],current_node[1] + 1])
+            else:
+                random_path.append([current_node[0] + 1,current_node[1]])
+
+        else:
+            if current_node[1] == cols - 1:
+                random_path.append([current_node[0] + 1,current_node[1]])
+            else:
+                random_path.append([current_node[0],current_node[1] + 1])
+        
+        current_node = random_path[-1]
+get_random_path()
+
 for i in range(rows):
     for j in range(cols):
         graph[i][j].get_neighbors(graph)
         graph[i][j].get_h(end)
+        graph[i][j].is_wall()
 
 openSet = [graph[0][0]]
 
@@ -130,4 +155,4 @@ while True:
     draw(curr_path)
 
     pygame.display.update()
-    clock.tick(10)
+    clock.tick(120)

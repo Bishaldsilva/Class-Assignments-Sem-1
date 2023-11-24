@@ -21,7 +21,7 @@ def mat_mul(A,B):
             temp = 0
             for k in range(c):
                 temp += A[i][k] * B[k][j]
-            r.append(round(temp,2))
+            r.append(int(round(temp,2)))
         M.append(r)
 
     return M
@@ -66,7 +66,7 @@ def LU(A,n):
             for j in range(i+1,n):
                 ratio = B[j][i] / B[i][i]
                 for k in range(n):
-                    B[j][k] -= round(ratio * B[i][k],3)
+                    B[j][k] = round(B[j][k] - ratio * B[i][k],3)
                 L[j][i]=round(ratio,3)
 
         else:
@@ -83,14 +83,17 @@ def LU(A,n):
     return L,B     
 
 
-n = int(input("Enter the size"))
+n = int(input("Enter the size of the square matrix: "))
 A = [[random.randint(1,9) for _ in range(n)] for _ in range(n)]
 # A = [[1,2,3],[4,8,6],[7,8,9]]
 L,U = LU(A,n)
 display(A,n)
 print(".......")
+print("Lower Triangular matrix is: ")
 display(L,n)
 print(".......")
+print("Upper Triangular matrix is: ")
 display(U,n)
 print(".......")
+print("Multiply of the two matrices is: ")
 display(mat_mul(L,U),n)

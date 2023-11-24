@@ -18,7 +18,7 @@ def union(x,y):
         parent[y] = x
     else:
         parent[x] = y
-        rank[x]+=1
+        rank[y]+=1
 
 def mst():
     edges = []

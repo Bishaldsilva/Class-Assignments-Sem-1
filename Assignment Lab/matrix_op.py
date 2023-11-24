@@ -33,7 +33,7 @@ def mat_mul(A,B):
             temp = 0
             for k in range(c):
                 temp += A[i][k] * B[k][j]
-            r.append(round(temp,2))
+            r.append(int(round(temp,2)))
         M.append(r)
 
     return M
@@ -147,5 +147,5 @@ print("rank of the matrix is: ",r)
 print(f"determinant of the matrix is {determinant(A,n)}")
 print(f"largest eigen value is {largest_eigen_value(A,n)}")
 print("Inverse of the matrix is: ")
-display(mat_mul(A,inverse(A,n)),n)
+display(inverse(A,n),n)
 # print(mat_mul([[1,4,8],[3,2,3],[1,7,3]],[[1.0], [0.61], [0.84]]))
