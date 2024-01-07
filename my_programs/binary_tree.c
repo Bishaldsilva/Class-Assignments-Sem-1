@@ -7,38 +7,27 @@ struct node{
     struct node *right;
 };
 
-struct node* createNode(int val){
-    struct node *newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = val;
-    newnode->left = NULL;
-    newnode->right = NULL;
+struct node *createNode(int val){
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    newNode->data = val;
+    newNode->left = NULL; 
+    newNode->right = NULL;
 
-    return newnode;
-}
-
-struct node *insert(struct node *root,int val){
-    if(root == NULL){
-        root = createNode(val);
-    } else if(val > root->data){
-        root->right = insert(root->right,val);
-    }else{
-        root->left = insert(root->left,val);
-    }
-    return root;
+    return newNode; 
 }
 
 struct node *createTree(struct node *root){
-    int val;
-    printf("Enter the value (-1 to exit) \n");
-    scanf("%d",&val);
-    if(val == -1){
+    int n;
+    printf("Enter the value...\n");
+    scanf("%d",&n);
+    if(n == -1){
         return NULL;
     }
 
-    root = createNode(val);
-    printf("Enter a value at the left of %d \n",val);
+    root = createNode(n);
+    printf("Enter the value at the left of %d\n",n);
     root->left = createTree(root->left);
-    printf("Enter a value at the right of %d \n",val);
+    printf("Enter the value at the right of %d\n",n);
     root->right = createTree(root->right);
 
     return root;
@@ -69,10 +58,10 @@ void postorder(struct node *root){
 }
 
 int main(){
-    struct node *root = NULL;
     int op;
+    struct node *root = NULL;
 
-    printf("1 to create the tree\n2 to display the tree in inorder\n3 to display the tree in preorder\n4 to display the tree in postorder\n");
+    printf("1 to create the tree(max 100 elements are allowed)\n2 to display the tree in inorder\n3 to display the tree in preorder\n4 to display the tree in postorder\n");
     while(1){
         printf("Enter your operation...\n");
         scanf("%d",&op);

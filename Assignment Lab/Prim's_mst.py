@@ -25,7 +25,8 @@ lines = f.readlines()
 nodes = []
 
 for i in range(len(lines)):
-    l = lines[i].split(" ")
+    # " 1 288 129" -> ["","1", "288","129"]
+    l = lines[i].split(" ") 
     temp = []
     for j in l:
         if j == '':

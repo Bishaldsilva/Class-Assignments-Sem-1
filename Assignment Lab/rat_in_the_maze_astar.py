@@ -89,8 +89,8 @@ def draw_maze():
     for i in range(rows):
         for j in range(cols):
             if graph[i][j].wall:
-                # pygame.draw.rect(screen,(0,0,0),(j * size,i * size,size,size))
-                pygame.draw.circle(screen,(0,0,0),graph[i][j].center,4)
+                pygame.draw.rect(screen,(0,0,0),(j * size,i * size,size,size))
+                # pygame.draw.circle(screen,(0,0,0),graph[i][j].center,4)
 
 def get_random_path():
     global random_path
