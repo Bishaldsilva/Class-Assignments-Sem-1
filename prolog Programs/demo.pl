@@ -1,0 +1,2 @@
+mammal(human).
+mammal(dog).

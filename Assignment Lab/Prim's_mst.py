@@ -3,7 +3,7 @@ import math
 def solve_mst():
     key[0] = 0
 
-    for i in range(no_of_nodes):
+    for j in range(no_of_nodes):
         u = -1
         min_val = INT_MAX
         for i in range(no_of_nodes):
