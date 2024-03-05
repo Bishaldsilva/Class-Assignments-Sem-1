@@ -1,2 +1,1 @@
-mammal(human).
-mammal(dog).
+exm(X) :- X > 3, !, X > 10.
