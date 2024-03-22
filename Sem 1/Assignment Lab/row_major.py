@@ -15,7 +15,7 @@ def multiply_matrices_row_major(matrix1, matrix2):
         for j in range(0, len(matrix2[0])):
             s = 0
             for k in range(len(matrix1[0])):
-                s += flat_matrix1[i + k] * flat_matrix2[j + len(matrix1[0]) * k]
+                s += flat_matrix1[i + k] * flat_matrix2[j + len(matrix2[0]) * k]
             result.append(s)
 
     # Reshape result into a 2D matrix
@@ -25,15 +25,16 @@ def multiply_matrices_row_major(matrix1, matrix2):
 
 # Example matrices
 matrix1 = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+    [1, 2, 3, 10],
+    [4, 5, 6, 20],
+    [7, 8, 9, 30]
 ]
 
 matrix2 = [
     [9, 8, 7],
     [6, 5, 4],
-    [3, 2, 1]
+    [3, 2, 1],
+    [40, 50, 60]
 ]
 
 result_matrix = multiply_matrices_row_major(matrix1, matrix2)
