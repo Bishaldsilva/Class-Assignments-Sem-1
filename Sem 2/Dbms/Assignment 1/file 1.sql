@@ -23,7 +23,9 @@ CREATE TABLE `DEPARTMENT` (
   PRIMARY KEY (`DEPT_CODE`));
   
 INSERT INTO EMPLOYEE (EMP_CODE, EMP_NAME, DEPT_CODE, DESIG_CODE, SEX, ADDRESS, CITY, STATE, PIN, BASIC, JN_DT) 
-VALUES 
+VALUES
+('1', 'John Doe', '1', '1', 'M', '123 Main St', 'Anytown', 'CA', '12345', 50000, '2023-05-15'),
+('2', 'Jane Smith', '2', '2', 'F', '456 Elm St', 'Otherville', 'NY', '54321', 55000, '2023-03-10'),
 ('3', 'David Brown', '3', '1', 'M', '789 Oak St', 'Smalltown', 'TX', '67890', 60000, '2022-12-20'),
 ('4', 'Emily Lee', '2', '3', 'F', '101 Pine St', 'Bigcity', 'IL', '45678', 52000, '2024-01-08'),
 ('5', 'Michael Chen', '1', '2', 'M', '202 Cedar St', 'Midtown', 'GA', '23456', 58000, '2023-08-12'),
